@@ -127,6 +127,10 @@ a { color: inherit; text-decoration: none; }
   overflow: hidden;
   display: flex; flex-direction: column; justify-content: flex-end;
   isolation: isolate;
+  /* reserve safe space below the fixed navbar so hero content (incl. the
+     "Gaming on Base" badge) can never rise up behind the logo/nav.
+     box-sizing:border-box (global reset) keeps this inside 100svh. */
+  padding-top: 120px;
 }
 .hero__bg { position: absolute; inset: 0; background: #000; z-index: 0; }
 /* PRIMARY hero background: video shown EXACTLY as exported — no filter, no tint */
@@ -338,6 +342,7 @@ a { color: inherit; text-decoration: none; }
   .kingdoms__plate { align-items: flex-end; }
 }
 @media (max-width: 520px) {
+  .hero { padding-top: 96px; }   /* safe space below the navbar on mobile */
   .hero__content { padding-bottom: 3.2rem; }
   .point { text-align: left; }
 }
