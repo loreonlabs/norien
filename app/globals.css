@@ -128,13 +128,24 @@ a { color: inherit; text-decoration: none; }
   display: flex; flex-direction: column; justify-content: flex-start;
   isolation: isolate;
 }
-.hero__bg { position: absolute; inset: 0; background: #000; z-index: 0; }
-/* PRIMARY hero background: video shown EXACTLY as exported — no filter, no tint */
+/* dark navy loading layer — shown until the video can play (no poster flash) */
+.hero__bg { position: absolute; inset: 0; background: var(--ink-950); z-index: 0; }
+/* TRUE fallback: the still image, faded in cleanly ONLY if the video errors */
+.hero__fallback {
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background-image: var(--hero-img);
+  background-size: cover; background-position: center 42%; background-repeat: no-repeat;
+  opacity: 0; transition: opacity .6s ease;
+}
+.hero__fallback.is-visible { opacity: 1; }
+/* PRIMARY hero background: video — starts hidden, fades in once it can play */
 .hero__video {
   position: absolute; top: 0; left: 0; width: 100%; height: 100%;
   object-fit: cover; object-position: center 42%;
-  z-index: 1; pointer-events: none; background: #000;
+  z-index: 1; pointer-events: none; background: var(--ink-950);
+  opacity: 0; transition: opacity .7s ease;
 }
+.hero__video.is-ready { opacity: 1; }
 /* readability: a subtle left-side dark gradient behind the text only — artwork stays visible */
 .hero__grade {
   position: absolute; inset: 0; z-index: 2; pointer-events: none;

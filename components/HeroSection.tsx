@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const ArrowIcon = () => (
   <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
@@ -10,37 +10,68 @@ const ArrowIcon = () => (
 
 export default function HeroSection() {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [ready, setReady] = useState(false);   // video has a playable frame → fade it in
+  const [failed, setFailed] = useState(false); // video errored → show still image fallback
 
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
     video.muted = true; // required for autoplay in most browsers
+
+    const failedRef = { current: false };
+    const reveal = () => {
+      if (failedRef.current) return;
+      setReady(true);
+    };
+    const onError = () => {
+      failedRef.current = true;
+      setReady(false);
+      setFailed(true);
+    };
+
+    // already buffered (e.g. fast cache / bfcache restore)?
+    if (video.readyState >= 2) reveal();
+
+    video.addEventListener("loadeddata", reveal);
+    video.addEventListener("canplay", reveal);
+    video.addEventListener("playing", reveal);
+    video.addEventListener("error", onError);
+
+    // begin playback immediately; retry once on first interaction if autoplay is blocked
     const tryPlay = () => {
       const p = video.play();
       if (p) p.catch(() => {});
     };
     tryPlay();
-    video.addEventListener("canplay", tryPlay, { once: true });
+    const interactions: Array<keyof WindowEventMap> = ["pointerdown", "touchstart", "keydown"];
+    interactions.forEach((ev) => window.addEventListener(ev, tryPlay, { once: true, passive: true }));
 
-    const events: Array<keyof WindowEventMap> = ["pointerdown", "touchstart", "keydown"];
-    events.forEach((ev) => window.addEventListener(ev, tryPlay, { once: true, passive: true }));
+    // safety net: never leave the hero on the blank navy layer forever
+    const safety = window.setTimeout(reveal, 6000);
 
     return () => {
-      video.removeEventListener("canplay", tryPlay);
-      events.forEach((ev) => window.removeEventListener(ev, tryPlay));
+      video.removeEventListener("loadeddata", reveal);
+      video.removeEventListener("canplay", reveal);
+      video.removeEventListener("playing", reveal);
+      video.removeEventListener("error", onError);
+      interactions.forEach((ev) => window.removeEventListener(ev, tryPlay));
+      window.clearTimeout(safety);
     };
   }, []);
 
   return (
     <header className="hero" id="top">
+      {/* dark navy loading layer (lowest) */}
       <div className="hero__bg" aria-hidden="true" />
+      {/* still-image fallback — only fades in if the video fails */}
+      <div className={`hero__fallback${failed ? " is-visible" : ""}`} aria-hidden="true" />
 
+      {/* primary background video: no poster (prevents image→video flash) */}
       <video
         ref={videoRef}
-        className="hero__video"
+        className={`hero__video${ready ? " is-ready" : ""}`}
         src="/videos/hero.mp4"
-        poster="/images/hero.jpg"
         autoPlay
         muted
         loop
