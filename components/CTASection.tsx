@@ -30,6 +30,9 @@ export default function CTASection() {
           <a className="btn btn--ghost btn--lg" href="https://docs.norien.live">
             <span>Codex</span>
           </a>
+          <a className="btn btn--ghost btn--lg" href="https://story.norien.live">
+            <span>Chronicles</span>
+          </a>
         </div>
       </div>
     </section>

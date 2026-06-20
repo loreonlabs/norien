@@ -354,6 +354,37 @@ button.nav__brand { background: none; border: 0; cursor: pointer; padding: 0; }
 }
 .foot__copy { max-width: var(--maxw); margin: .9rem auto 0; font-size: .78rem; letter-spacing: .04em; color: rgba(245,239,225,.32); text-align: center; }
 
+/* ---------- shared sub-property footer (Codex + Chronicles) ---------- */
+.site-foot {
+  border-top: 1px solid rgba(217,177,95,.16);
+  background: var(--ink-950);
+  padding: 2.4rem clamp(1.2rem, 4vw, 2.6rem) 2rem;
+}
+.site-foot__inner {
+  max-width: 1180px; margin: 0 auto; display: flex; flex-wrap: wrap;
+  align-items: center; justify-content: space-between; gap: 1.2rem 1.6rem;
+}
+.site-foot__brand {
+  display: flex; align-items: center; gap: .6rem;
+  font-family: "Cinzel", serif; font-weight: 700; letter-spacing: .3em; color: var(--gold-lt);
+}
+.site-foot__links { display: flex; flex-wrap: wrap; align-items: center; gap: 1.4rem; }
+.site-foot__links a {
+  font-family: "Cinzel", serif; font-size: .78rem; letter-spacing: .12em;
+  color: rgba(245,239,225,.72); transition: color .3s;
+}
+.site-foot__links a:hover { color: var(--gold-lt); }
+.site-foot__x { display: inline-flex; align-items: center; gap: .45rem; }
+.site-foot__x svg { display: block; }
+.site-foot__copy {
+  max-width: 1180px; margin: 1.4rem auto 0; text-align: center;
+  font-size: .76rem; letter-spacing: .04em; color: rgba(245,239,225,.32);
+}
+@media (max-width: 620px) {
+  .site-foot__inner { flex-direction: column; align-items: center; text-align: center; }
+  .site-foot__links { justify-content: center; gap: 1rem 1.3rem; }
+}
+
 /* ============================================================
    REVEALS / RESPONSIVE / MOTION
    ============================================================ */
@@ -378,6 +409,10 @@ button.nav__brand { background: none; border: 0; cursor: pointer; padding: 0; }
   .hero__content { padding-top: 100px; }
   .hero__title { font-size: clamp(2.4rem, 11vw, 3.4rem); }
   .point { text-align: left; }
+  /* stack CTA + hero actions into full-width, easily tappable buttons */
+  .play__actions, .hero__actions { flex-direction: column; align-items: stretch; width: 100%; }
+  .play__actions .btn, .hero__actions .btn { width: 100%; justify-content: center; }
+  .play__inner, .hero__content { width: 100%; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -417,8 +452,6 @@ button.nav__brand { background: none; border: 0; cursor: pointer; padding: 0; }
   color: rgba(245,239,225,.85); transition: color .3s;
 }
 .docs__navlinks a:hover { color: var(--gold-lt); }
-.docs__x { display: inline-flex; align-items: center; }
-.docs__x svg { display: block; }
 .docs__cta {
   border: 1px solid rgba(217,177,95,.5); padding: .5rem 1.05rem; border-radius: 2px;
   color: var(--gold-lt) !important; letter-spacing: .14em;
@@ -539,7 +572,7 @@ button.nav__brand { background: none; border: 0; cursor: pointer; padding: 0; }
   .docs__overlay { display: block; position: fixed; inset: 72px 0 0; background: rgba(0,0,0,.5); z-index: 45; }
 }
 @media (max-width: 620px) {
-  .docs__navlinks a:not(.docs__cta):not(.docs__x) { display: none; }
+  .docs__navlinks a:not(.docs__cta) { display: none; }
   .docs__brand-name { font-size: .86rem; }
 }
 
@@ -591,8 +624,6 @@ body.story--locked { overflow: hidden; }
   color: rgba(245,239,225,.85); transition: color .3s;
 }
 .story__navlinks a:hover { color: var(--gold-lt); }
-.story__x { display: inline-flex; align-items: center; }
-.story__x svg { display: block; }
 .story__cta {
   border: 1px solid rgba(217,177,95,.5); padding: .5rem 1.05rem; border-radius: 2px;
   color: var(--gold-lt) !important; letter-spacing: .14em;
@@ -960,7 +991,7 @@ body.story--locked { overflow: hidden; }
   .chron__meta { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 620px) {
-  .story__navlinks a:not(.story__cta):not(.story__x) { display: none; }
+  .story__navlinks a:not(.story__cta) { display: none; }
   .story__brand-name { font-size: .8rem; }
   .chron__text p:first-of-type::first-letter { font-size: 2.8em; }
   .chron__chapnav { flex-direction: column; }

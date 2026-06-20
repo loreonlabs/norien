@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import XIcon from "@/components/XIcon";
+import SiteFooter from "@/components/SiteFooter";
 
 const SECTIONS = [
   { id: "overview", label: "Overview" },
@@ -63,15 +63,6 @@ export default function DocsShell({ children }: { children: React.ReactNode }) {
           <a href="https://norien.live">Main Site</a>
           <a href="https://story.norien.live">Chronicles</a>
           <a className="docs__cta" href="https://play.norien.live">Play</a>
-          <a
-            className="docs__x"
-            href="https://x.com/norienlive"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Official Norien X (opens in a new tab)"
-          >
-            <XIcon />
-          </a>
         </nav>
       </header>
 
@@ -97,6 +88,15 @@ export default function DocsShell({ children }: { children: React.ReactNode }) {
 
         <main className="docs__main">{children}</main>
       </div>
+
+      <SiteFooter
+        links={[
+          { label: "Main Site", href: "https://norien.live" },
+          { label: "Chronicles", href: "https://story.norien.live" },
+          { label: "Play", href: "https://play.norien.live" },
+          { label: "Official X", href: "https://x.com/norienlive", x: true },
+        ]}
+      />
     </div>
   );
 }

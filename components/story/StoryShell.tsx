@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import XIcon from "@/components/XIcon";
+import SiteFooter from "@/components/SiteFooter";
 
 /**
  * Navigation + chrome for The Chronicles of Norien.
@@ -134,15 +134,6 @@ export default function StoryShell({ children }: { children: React.ReactNode }) 
           <a className="story__cta" href="https://play.norien.live">
             Play
           </a>
-          <a
-            className="story__x"
-            href="https://x.com/norienlive"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Official Norien X (opens in a new tab)"
-          >
-            <XIcon />
-          </a>
         </nav>
       </header>
 
@@ -158,6 +149,15 @@ export default function StoryShell({ children }: { children: React.ReactNode }) 
 
         <main className="story__main">{children}</main>
       </div>
+
+      <SiteFooter
+        links={[
+          { label: "Main Site", href: "https://norien.live" },
+          { label: "Codex", href: "https://docs.norien.live" },
+          { label: "Play", href: "https://play.norien.live" },
+          { label: "Official X", href: "https://x.com/norienlive", x: true },
+        ]}
+      />
     </div>
   );
 }
