@@ -1,16 +1,18 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
 /**
- * Navigation for The Chronicles of Norien.
+ * Navigation + chrome for The Chronicles of Norien.
  *
- * Mirrors the codex shell's interaction model — smooth scroll with NO hash and
- * NO URL mutation — but wears the cinematic story skin. The numerals echo the
- * chapter plates so the rail reads like a table of contents in a bound archive.
+ * Interaction model: smooth scroll with NO hash and NO URL mutation — the rail
+ * and the in-page book flow both call scrollIntoView and update local state
+ * only. A thin gold reading-progress bar tracks document scroll. The nav is
+ * split into the eleven Ages and a separate Archive (world, factions, myths,
+ * timeline) so it reads like the contents of a bound history.
  */
-const SECTIONS = [
+const AGES = [
   { id: "first-age", num: "I", label: "The First Age" },
   { id: "great-sea", num: "II", label: "The Great Sea" },
   { id: "merchant-kingdoms", num: "III", label: "Merchant Kingdoms" },
@@ -22,13 +24,23 @@ const SECTIONS = [
   { id: "expansion", num: "IX", label: "Age of Expansion" },
   { id: "legends", num: "X", label: "Legends" },
   { id: "present-age", num: "XI", label: "Present Age" },
-  { id: "timeline", num: "✦", label: "Timeline" },
 ];
+
+const ARCHIVE = [
+  { id: "world", num: "◆", label: "World of Norien" },
+  { id: "factions", num: "◆", label: "Factions" },
+  { id: "legends-myths", num: "◆", label: "Legends & Myths" },
+  { id: "timeline", num: "◆", label: "Timeline" },
+];
+
+const ALL = [...AGES, ...ARCHIVE];
 
 export default function StoryShell({ children }: { children: React.ReactNode }) {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState("first-age");
+  const barRef = useRef<HTMLSpanElement | null>(null);
 
+  // Active-section spy (no URL change).
   useEffect(() => {
     const obs = new IntersectionObserver(
       (entries) => {
@@ -38,11 +50,34 @@ export default function StoryShell({ children }: { children: React.ReactNode }) 
       },
       { rootMargin: "-35% 0px -60% 0px", threshold: 0 }
     );
-    SECTIONS.forEach((s) => {
+    ALL.forEach((s) => {
       const el = document.getElementById(s.id);
       if (el) obs.observe(el);
     });
     return () => obs.disconnect();
+  }, []);
+
+  // Reading progress — rAF-throttled, writes scaleX directly to avoid re-renders.
+  useEffect(() => {
+    let raf = 0;
+    const update = () => {
+      raf = 0;
+      const doc = document.documentElement;
+      const max = doc.scrollHeight - doc.clientHeight;
+      const pct = max > 0 ? Math.min(1, Math.max(0, doc.scrollTop / max)) : 0;
+      if (barRef.current) barRef.current.style.transform = `scaleX(${pct})`;
+    };
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
   }, []);
 
   // Smooth scroll only — never touch the URL (no #hash, no history entries).
@@ -53,13 +88,32 @@ export default function StoryShell({ children }: { children: React.ReactNode }) 
     setOpen(false);
   };
 
+  const renderGroup = (items: typeof AGES) =>
+    items.map((s) => (
+      <button
+        key={s.id}
+        type="button"
+        className={active === s.id ? "is-active" : ""}
+        aria-current={active === s.id ? "true" : undefined}
+        onClick={() => goTo(s.id)}
+      >
+        <span className="story__navnum">{s.num}</span>
+        <span>{s.label}</span>
+      </button>
+    ));
+
   return (
     <div className="story">
+      <div className="story__progress" aria-hidden="true">
+        <span ref={barRef} />
+      </div>
+
       <header className="story__nav">
         <div className="story__nav-left">
           <button
             className="story__menu-btn"
             aria-label="Toggle navigation"
+            aria-expanded={open}
             onClick={() => setOpen((o) => !o)}
           >
             <span />
@@ -87,20 +141,9 @@ export default function StoryShell({ children }: { children: React.ReactNode }) 
       <div className="story__shell">
         <aside className={`story__sidebar${open ? " is-open" : ""}`}>
           <h4>The Ages</h4>
-          <nav className="story__navlist">
-            {SECTIONS.map((s) => (
-              <button
-                key={s.id}
-                type="button"
-                className={active === s.id ? "is-active" : ""}
-                aria-current={active === s.id ? "true" : undefined}
-                onClick={() => goTo(s.id)}
-              >
-                <span className="story__navnum">{s.num}</span>
-                <span>{s.label}</span>
-              </button>
-            ))}
-          </nav>
+          <nav className="story__navlist">{renderGroup(AGES)}</nav>
+          <h4 className="story__navhead-2">The Archive</h4>
+          <nav className="story__navlist">{renderGroup(ARCHIVE)}</nav>
         </aside>
 
         <main className="story__main">{children}</main>
