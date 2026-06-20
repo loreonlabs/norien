@@ -2,10 +2,12 @@ import type { Metadata } from "next";
 import StoryShell from "@/components/story/StoryShell";
 
 const STORY_DESCRIPTION =
-  "The lore and history of Norien — eleven ages of a living world, from the first untouched lands to the present, where every kingdom begins as a story.";
+  "Explore the history, legends, ages, and world archive of Norien.";
+
+const STORY_OG_IMAGE = "https://story.norien.live/og/chronicles-og.png";
 
 export const metadata: Metadata = {
-  title: "The Chronicles of Norien — Lore & History",
+  title: "The Chronicles of Norien",
   description: STORY_DESCRIPTION,
   alternates: { canonical: "https://story.norien.live" },
   openGraph: {
@@ -14,13 +16,13 @@ export const metadata: Metadata = {
     url: "https://story.norien.live",
     type: "website",
     siteName: "Norien",
-    images: [{ url: "/logo.png", width: 500, height: 500, alt: "Norien" }],
+    images: [{ url: STORY_OG_IMAGE, width: 1200, height: 675, alt: "The Chronicles of Norien" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "The Chronicles of Norien",
     description: STORY_DESCRIPTION,
-    images: ["/logo.png"],
+    images: [STORY_OG_IMAGE],
   },
 };
 

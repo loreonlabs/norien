@@ -25,13 +25,20 @@ export const metadata: Metadata = {
     url: "https://norien.live",
     type: "website",
     siteName: "Norien",
-    images: [{ url: "/logo.png", width: 500, height: 500, alt: "Norien" }],
+    images: [
+      {
+        url: "https://norien.live/og/norien-og.png",
+        width: 1200,
+        height: 675,
+        alt: "Norien — Build Kingdoms. Shape Trade. Leave A Legacy.",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Norien — Build a Living World",
     description: SITE_DESCRIPTION,
-    images: ["/logo.png"],
+    images: ["https://norien.live/og/norien-og.png"],
   },
 };
 
