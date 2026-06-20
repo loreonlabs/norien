@@ -4,18 +4,19 @@ import type { NextRequest } from "next/server";
 /**
  * Hostname-based routing for the Norien deployment.
  *
- *   norien.live        → Landing page        (app/page.tsx)   [default]
- *   docs.norien.live   → The Norien Codex     (app/docs)       [root rewritten to /docs]
- *   story.norien.live  → Story site           (separate deployment)
- *   play.norien.live   → Play / game          (separate deployment)
+ *   norien.live        → Landing page            (app/page.tsx)  [default]
+ *   docs.norien.live   → The Norien Codex         (app/docs)      [root rewritten to /docs]
+ *   story.norien.live  → The Chronicles of Norien (app/story)     [root rewritten to /story]
+ *   play.norien.live   → Play / game              (separate deployment)
  *
- * Subdomains that map to a route inside THIS app are listed below. The docs
- * subdomain must render the codex at its own root — never the landing page.
- * `story` and `play` live in their own deployments, so their domains should be
- * assigned to those projects in Vercel (they are intentionally not mapped here).
+ * Subdomains that map to a route inside THIS app are listed below. Each must
+ * render its experience at its own root — never the landing page. `play` lives
+ * in its own deployment, so its domain is assigned to that project in Vercel
+ * (it is intentionally not mapped here).
  */
 const SUBDOMAIN_ROUTES: Record<string, string> = {
   docs: "/docs",
+  story: "/story",
 };
 
 export function middleware(req: NextRequest) {
