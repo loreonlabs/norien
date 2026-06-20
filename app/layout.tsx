@@ -2,17 +2,36 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import IconSprite from "@/components/IconSprite";
 
+const SITE_DESCRIPTION =
+  "Norien is a persistent strategy world where kingdoms rise, trade shapes power, and every decision leaves a lasting legacy.";
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://norien.live"),
   title: "Norien — Build a Living World",
-  description:
-    "Norien is a persistent strategy world where kingdoms rise, trade shapes power, and every decision leaves a lasting legacy.",
+  description: SITE_DESCRIPTION,
+  // app/favicon.ico is auto-injected by the file convention; these add the
+  // PNG sizes, the full-res logo, and the Apple touch icon.
+  icons: {
+    icon: [
+      { url: "/favicon-32x32.png", type: "image/png", sizes: "32x32" },
+      { url: "/favicon-16x16.png", type: "image/png", sizes: "16x16" },
+      { url: "/logo.png", type: "image/png", sizes: "500x500" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+  },
   openGraph: {
     title: "Norien — Build a Living World",
-    description:
-      "Norien is a persistent strategy world where kingdoms rise, trade shapes power, and every decision leaves a lasting legacy.",
+    description: SITE_DESCRIPTION,
     url: "https://norien.live",
     type: "website",
+    siteName: "Norien",
+    images: [{ url: "/logo.png", width: 500, height: 500, alt: "Norien" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Norien — Build a Living World",
+    description: SITE_DESCRIPTION,
+    images: ["/logo.png"],
   },
 };
 

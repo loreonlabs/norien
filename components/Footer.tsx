@@ -1,12 +1,12 @@
+import Image from "next/image";
+
 /** Footer — brand, tagline, links, "Built on Base" badge. */
 export default function Footer() {
   return (
     <footer className="foot">
       <div className="foot__inner">
         <div className="foot__brand">
-          <svg viewBox="0 0 48 48" width="26" height="26" aria-hidden="true">
-            <use href="#sigil" />
-          </svg>
+          <Image src="/logo.png" alt="Norien" width={26} height={26} />
           <span>NORIEN</span>
         </div>
         <p className="foot__meta">Build dynasties. Control trade. Shape history.</p>

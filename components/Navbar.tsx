@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -15,9 +16,7 @@ export default function Navbar() {
   return (
     <nav className={`nav${scrolled ? " scrolled" : ""}`} id="nav" aria-label="Primary">
       <a className="nav__brand" href="#top">
-        <svg className="nav__sigil" viewBox="0 0 48 48" width="40" height="40" aria-hidden="true">
-          <use href="#sigil" />
-        </svg>
+        <Image className="nav__sigil" src="/logo.png" alt="Norien" width={40} height={40} priority />
         <span className="nav__name">NORIEN</span>
       </a>
       <div className="nav__links">

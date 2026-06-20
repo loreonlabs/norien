@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const ArrowIcon = () => (
   <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
     <path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -9,9 +11,7 @@ export default function CTASection() {
   return (
     <section className="play" id="play">
       <div className="play__inner reveal">
-        <svg className="play__sigil" viewBox="0 0 48 48" width="56" height="56" aria-hidden="true">
-          <use href="#sigil" />
-        </svg>
+        <Image className="play__sigil" src="/logo.png" alt="Norien" width={56} height={56} />
         <p className="kicker">Enter Norien</p>
         <h2 className="play__head">
           Your Story
