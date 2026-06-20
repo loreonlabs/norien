@@ -366,3 +366,153 @@ a { color: inherit; text-decoration: none; }
   .hero__video { display: none; }
   .hero__bg { background-image: var(--hero-img); background-size: cover; background-position: center 42%; background-repeat: no-repeat; }
 }
+
+/* ============================================================
+   THE NORIEN CODEX — docs (docs.norien.live)
+   Reuses the brand system: navy/black bg, gold accents, off-white
+   text, same fonts + logo. No video, images, parallax, or artwork.
+   ============================================================ */
+.docs { min-height: 100vh; background: var(--ink-950); }
+
+/* top navbar */
+.docs__nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 50; height: 72px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 clamp(1.1rem, 3vw, 2.2rem);
+  background: rgba(5,10,18,.86); backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(217,177,95,.16);
+}
+.docs__nav-left { display: flex; align-items: center; gap: .75rem; }
+.docs__brand { display: flex; align-items: center; gap: .7rem; }
+.docs__brand-name {
+  font-family: "Cinzel", serif; font-weight: 700; letter-spacing: .14em;
+  font-size: .98rem; color: var(--ivory); white-space: nowrap;
+}
+.docs__brand-name span { color: var(--gold-lt); }
+.docs__navlinks { display: flex; align-items: center; gap: clamp(1rem, 2.5vw, 2rem); }
+.docs__navlinks a {
+  font-family: "Cinzel", serif; font-size: .78rem; letter-spacing: .12em;
+  color: rgba(245,239,225,.85); transition: color .3s;
+}
+.docs__navlinks a:hover { color: var(--gold-lt); }
+.docs__cta {
+  border: 1px solid rgba(217,177,95,.5); padding: .5rem 1.05rem; border-radius: 2px;
+  color: var(--gold-lt) !important; letter-spacing: .14em;
+}
+.docs__cta:hover { background: rgba(217,177,95,.14); }
+
+/* hamburger (mobile only) */
+.docs__menu-btn {
+  display: none; flex-direction: column; gap: 4px; width: 34px; height: 34px;
+  align-items: center; justify-content: center; background: none; cursor: pointer;
+  border: 1px solid rgba(217,177,95,.3); border-radius: 4px;
+}
+.docs__menu-btn span { display: block; width: 16px; height: 1.5px; background: var(--gold-lt); }
+
+/* shell: sticky sidebar + main */
+.docs__shell {
+  max-width: 1280px; margin: 0 auto; padding-top: 72px;
+  display: grid; grid-template-columns: 256px minmax(0, 1fr);
+}
+.docs__sidebar {
+  position: sticky; top: 72px; align-self: start;
+  height: calc(100vh - 72px); overflow-y: auto;
+  padding: 2.2rem 1rem 2.5rem clamp(1.1rem, 3vw, 2rem);
+  border-right: 1px solid rgba(217,177,95,.14);
+}
+.docs__sidebar h4 {
+  font-family: "Cinzel", serif; font-size: .7rem; letter-spacing: .24em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; padding-left: .8rem;
+}
+.docs__navlist { display: flex; flex-direction: column; gap: .12rem; }
+.docs__navlist a {
+  font-family: "Inter", sans-serif; font-size: .92rem; color: rgba(245,239,225,.68);
+  padding: .5rem .8rem; border-radius: 4px; border-left: 2px solid transparent;
+  transition: color .25s, background .25s, border-color .25s;
+}
+.docs__navlist a:hover { color: var(--ivory); background: rgba(217,177,95,.06); }
+.docs__navlist a.is-active {
+  color: var(--gold-lt); border-left-color: var(--gold); background: rgba(217,177,95,.08);
+}
+
+.docs__main { padding: clamp(2rem,5vw,3.4rem) clamp(1.2rem,4vw,3.6rem) 6rem; min-width: 0; }
+
+/* codex content */
+.codex { max-width: 780px; }
+.codex__hero {
+  padding-bottom: 2.2rem; margin-bottom: 1rem;
+  border-bottom: 1px solid rgba(217,177,95,.16);
+}
+.codex__kicker {
+  font-family: "Cinzel", serif; letter-spacing: .3em; text-transform: uppercase;
+  font-size: .72rem; color: var(--gold); margin-bottom: 1rem;
+}
+.codex__title {
+  font-family: "Cinzel", serif; font-weight: 800; letter-spacing: .02em;
+  font-size: clamp(2.2rem, 5vw, 3.4rem); line-height: 1.04; color: var(--ivory);
+}
+.codex__subtitle {
+  font-family: "Cormorant Garamond", serif; font-size: clamp(1.15rem, 2.2vw, 1.45rem);
+  color: var(--muted); margin-top: 1rem; max-width: 60ch;
+}
+
+.codex__section {
+  padding: 2.4rem 0; border-bottom: 1px solid rgba(217,177,95,.1);
+  scroll-margin-top: 92px;
+}
+.codex__section:last-child { border-bottom: none; }
+.codex__eyebrow {
+  font-family: "Cinzel", serif; font-size: .66rem; letter-spacing: .22em;
+  text-transform: uppercase; color: var(--gold-dk); margin-bottom: .7rem;
+}
+.codex__h2 {
+  font-family: "Cinzel", serif; font-weight: 700; font-size: clamp(1.5rem, 3vw, 2rem);
+  color: var(--ivory); margin-bottom: 1.1rem;
+}
+.codex__section p {
+  font-family: "Inter", sans-serif; font-size: 1rem; line-height: 1.75;
+  color: rgba(245,239,225,.8); margin-bottom: 1rem; max-width: 68ch;
+}
+.codex__section p:last-child { margin-bottom: 0; }
+.codex__section ul { margin: .2rem 0 1rem 1.1rem; max-width: 68ch; }
+.codex__section li {
+  font-family: "Inter", sans-serif; font-size: 1rem; line-height: 1.7;
+  color: rgba(245,239,225,.78); margin-bottom: .4rem; padding-left: .3rem;
+}
+.codex__section li::marker { color: var(--gold); }
+.codex__section strong { color: var(--gold-lt); font-weight: 600; }
+
+/* "Gaming on Base" note callout */
+.codex__note {
+  border-left: 2px solid var(--gold); background: rgba(217,177,95,.05);
+  padding: 1rem 1.25rem; border-radius: 0 6px 6px 0; margin-top: 1.2rem;
+}
+.codex__note p { margin: 0; color: rgba(245,239,225,.85); }
+
+/* FAQ */
+.codex__faq { display: flex; flex-direction: column; gap: 1rem; margin-top: .5rem; }
+.codex__faq-item {
+  border: 1px solid rgba(217,177,95,.16); border-radius: 6px; padding: 1.05rem 1.3rem;
+  background: linear-gradient(180deg, rgba(217,177,95,.035), transparent 80%);
+}
+.codex__faq-q { font-family: "Cinzel", serif; font-weight: 600; font-size: 1rem; color: var(--ivory); margin-bottom: .45rem; }
+.codex__faq-a { font-family: "Inter", sans-serif; font-size: .96rem; line-height: 1.7; color: rgba(245,239,225,.75); }
+
+.docs__overlay { display: none; }
+
+/* responsive: collapse sidebar into a drawer */
+@media (max-width: 900px) {
+  .docs__shell { grid-template-columns: 1fr; }
+  .docs__menu-btn { display: flex; }
+  .docs__sidebar {
+    position: fixed; top: 72px; left: 0; bottom: 0; width: min(280px, 82vw); z-index: 46;
+    height: auto; background: var(--ink-900);
+    transform: translateX(-105%); transition: transform .3s var(--ease);
+  }
+  .docs__sidebar.is-open { transform: translateX(0); box-shadow: 0 20px 60px rgba(0,0,0,.5); }
+  .docs__overlay { display: block; position: fixed; inset: 72px 0 0; background: rgba(0,0,0,.5); z-index: 45; }
+}
+@media (max-width: 620px) {
+  .docs__navlinks a:not(.docs__cta) { display: none; }
+  .docs__brand-name { font-size: .86rem; }
+}
