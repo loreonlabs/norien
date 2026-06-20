@@ -1,6 +1,8 @@
 import Image from "next/image";
+import ScrollLink from "@/components/ScrollLink";
+import XIcon from "@/components/XIcon";
 
-/** Footer — brand, tagline, links, "Built on Base" badge. */
+/** Footer — brand, tagline, the full Norien nav set, "Built on Base" badge. */
 export default function Footer() {
   return (
     <footer className="foot">
@@ -11,11 +13,20 @@ export default function Footer() {
         </div>
         <p className="foot__meta">Build dynasties. Control trade. Shape history.</p>
         <div className="foot__links">
-          <a href="#world">World</a>
-          <a href="#kingdoms">Kingdoms</a>
-          <a href="#trade">Trade</a>
-          <a href="https://docs.norien.live">Docs</a>
+          <ScrollLink targetId="world">World</ScrollLink>
+          <ScrollLink targetId="kingdoms">Kingdoms</ScrollLink>
+          <ScrollLink targetId="trade">Trade</ScrollLink>
+          <a href="https://docs.norien.live">Codex</a>
+          <a href="https://story.norien.live">Chronicles</a>
           <a href="https://play.norien.live">Play</a>
+          <a
+            className="foot__x"
+            href="https://x.com/norienlive"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <XIcon /> Official X
+          </a>
         </div>
       </div>
       <div className="foot__base">

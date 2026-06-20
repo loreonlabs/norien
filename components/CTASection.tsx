@@ -28,7 +28,7 @@ export default function CTASection() {
             <ArrowIcon />
           </a>
           <a className="btn btn--ghost btn--lg" href="https://docs.norien.live">
-            <span>Documentation</span>
+            <span>Codex</span>
           </a>
         </div>
       </div>

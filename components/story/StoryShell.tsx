@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import XIcon from "@/components/XIcon";
 
 /**
  * Navigation + chrome for The Chronicles of Norien.
@@ -129,9 +130,18 @@ export default function StoryShell({ children }: { children: React.ReactNode }) 
         </div>
         <nav className="story__navlinks">
           <a href="https://norien.live">Main Site</a>
-          <a href="https://docs.norien.live">The Codex</a>
+          <a href="https://docs.norien.live">Codex</a>
           <a className="story__cta" href="https://play.norien.live">
             Play
+          </a>
+          <a
+            className="story__x"
+            href="https://x.com/norienlive"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Official Norien X (opens in a new tab)"
+          >
+            <XIcon />
           </a>
         </nav>
       </header>

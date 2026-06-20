@@ -107,7 +107,7 @@ export default function HeroSection() {
             <ArrowIcon />
           </a>
           <a className="btn btn--ghost" href="https://docs.norien.live">
-            <span>Documentation</span>
+            <span>Codex</span>
           </a>
         </div>
       </div>
