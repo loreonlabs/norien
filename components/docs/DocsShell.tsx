@@ -7,6 +7,7 @@ const SECTIONS = [
   { id: "overview", label: "Overview" },
   { id: "world", label: "World" },
   { id: "kingdoms", label: "Kingdoms" },
+  { id: "resources", label: "Resources" },
   { id: "trade", label: "Trade" },
   { id: "expansion", label: "Expansion" },
   { id: "diplomacy", label: "Diplomacy" },
@@ -37,6 +38,14 @@ export default function DocsShell({ children }: { children: React.ReactNode }) {
     return () => obs.disconnect();
   }, []);
 
+  // Smooth scroll without touching the URL (no #hash).
+  const goTo = (id: string) => {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    setActive(id);
+    setOpen(false);
+  };
+
   return (
     <div className="docs">
       <header className="docs__nav">
@@ -44,7 +53,7 @@ export default function DocsShell({ children }: { children: React.ReactNode }) {
           <button className="docs__menu-btn" aria-label="Toggle navigation" onClick={() => setOpen((o) => !o)}>
             <span /><span /><span />
           </button>
-          <a className="docs__brand" href="/docs">
+          <a className="docs__brand" href="/">
             <Image src="/logo.png" alt="Norien" width={34} height={34} priority />
             <span className="docs__brand-name">The Norien&nbsp;<span>Codex</span></span>
           </a>
@@ -63,14 +72,15 @@ export default function DocsShell({ children }: { children: React.ReactNode }) {
           <h4>The Codex</h4>
           <nav className="docs__navlist">
             {SECTIONS.map((s) => (
-              <a
+              <button
                 key={s.id}
-                href={`#${s.id}`}
+                type="button"
                 className={active === s.id ? "is-active" : ""}
-                onClick={() => setOpen(false)}
+                aria-current={active === s.id ? "true" : undefined}
+                onClick={() => goTo(s.id)}
               >
                 {s.label}
-              </a>
+              </button>
             ))}
           </nav>
         </aside>
