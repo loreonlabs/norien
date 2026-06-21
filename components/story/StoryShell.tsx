@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import SiteFooter from "@/components/SiteFooter";
+import WorldBackdrop from "@/components/world/WorldBackdrop";
 
 /**
  * Navigation + chrome for The Chronicles of Norien.
@@ -105,6 +106,7 @@ export default function StoryShell({ children }: { children: React.ReactNode }) 
 
   return (
     <div className="story">
+      <WorldBackdrop />
       <div className="story__progress" aria-hidden="true">
         <span ref={barRef} />
       </div>

@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import SiteFooter from "@/components/SiteFooter";
+import WorldBackdrop from "@/components/world/WorldBackdrop";
 
 const SECTIONS = [
   { id: "overview", label: "Overview" },
@@ -49,6 +50,7 @@ export default function DocsShell({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="docs">
+      <WorldBackdrop />
       <header className="docs__nav">
         <div className="docs__nav-left">
           <button className="docs__menu-btn" aria-label="Toggle navigation" onClick={() => setOpen((o) => !o)}>

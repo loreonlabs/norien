@@ -37,8 +37,8 @@ const CHAPTERS: Chapter[] = [
     short: "The First Age",
     age: "The First Age",
     title: "Before the Crowns",
-    image: "/story/ch01-first-age.jpg",
-    alt: "An ancient, untouched world of mist-wrapped mountains, rivers, and deep forests.",
+    image: "/story/ch01-first-age.png",
+    alt: "Untouched Norien — pristine floating isles above layered deep-blue mountains under a navy sky.",
     meta: { era: "The First Age", region: "The Whole of Norien", status: "Mythic", importance: "Foundational" },
     quote: { text: "Before the first crown, there was only the land — and the land remembers.", source: "The Elder Verses" },
     paragraphs: [
@@ -54,8 +54,8 @@ const CHAPTERS: Chapter[] = [
     short: "The Great Sea",
     age: "The Great Sea",
     title: "The Heart of the World",
-    image: "/story/ch02-great-sea.jpg",
-    alt: "A lone sailing ship on a vast, mirror-still sea beneath a sky of stars.",
+    image: "/story/ch02-great-sea.png",
+    alt: "The Great Sea of Norien — a lone ship beneath a floating isle on a fog-veiled sea.",
     meta: { era: "The First Age", region: "The Great Sea", status: "Mythic", importance: "Major" },
     quote: { text: "Give a people the sea, and you give them the world.", source: "Saying of the Merchant Coast" },
     paragraphs: [
@@ -71,8 +71,8 @@ const CHAPTERS: Chapter[] = [
     short: "Merchant Kingdoms",
     age: "The Merchant Kingdoms",
     title: "The Price of Power",
-    image: "/story/ch03-merchant-kingdoms.jpg",
-    alt: "A bustling medieval trade town at golden hour, its lanes lined with merchant houses.",
+    image: "/story/ch03-merchant-kingdoms.png",
+    alt: "Merchant isles of Norien aglow with warm golden light above the deep-blue ranges.",
     meta: { era: "Age of Commerce", region: "Merchant Coast", status: "Historical", importance: "Major" },
     quote: { text: "A trusted name outlasts a full vault.", source: "Ledger of the Three Houses" },
     paragraphs: [
@@ -88,8 +88,8 @@ const CHAPTERS: Chapter[] = [
     short: "Old Empire",
     age: "The Old Empire",
     title: "One Crown to Bind Them",
-    image: "/story/ch04-old-empire.jpg",
-    alt: "A golden capital of monuments and temples crowning a sunlit hill.",
+    image: "/story/ch04-old-empire.png",
+    alt: "A golden citadel crowning a great floating island of the Old Empire of Norien.",
     meta: { era: "The Imperial Age", region: "Old Imperial Lands", status: "Historical", importance: "Defining" },
     quote: { text: "One road, one law, one crown — and the world grew quiet.", source: "Annals of the Imperial Court" },
     paragraphs: [
@@ -105,8 +105,8 @@ const CHAPTERS: Chapter[] = [
     short: "Fall of the Empire",
     age: "The Fall of the Empire",
     title: "The Long Shattering",
-    image: "/story/ch05-fall.jpg",
-    alt: "The ruins of a great imperial city, its arches broken and silent at dusk.",
+    image: "/story/ch05-fall.png",
+    alt: "Broken, tilting isles and dimmed gold over the mountains — the fall of the empire.",
     meta: { era: "The Imperial Age", region: "Old Imperial Lands", status: "Historical", importance: "Defining" },
     quote: { text: "Empires fall. Roads remain.", source: "Chronicle of the Fifth Age" },
     paragraphs: [
@@ -122,8 +122,8 @@ const CHAPTERS: Chapter[] = [
     short: "Age of Kingdoms",
     age: "The Age of Kingdoms",
     title: "A Hundred Thrones",
-    image: "/story/ch06-age-of-kingdoms.jpg",
-    alt: "A fortified medieval castle crowning a forested ridge beneath a brooding sky.",
+    image: "/story/ch06-age-of-kingdoms.png",
+    alt: "Many castle isles at varied heights across the kingdoms of Norien.",
     meta: { era: "Age of Kingdoms", region: "Central Realm", status: "Historical", importance: "Major" },
     quote: { text: "A hill, a wall, and the will to hold it — that is a kingdom.", source: "Sayings of the Stone Lords" },
     paragraphs: [
@@ -139,8 +139,8 @@ const CHAPTERS: Chapter[] = [
     short: "Northern Frontier",
     age: "The Northern Frontier",
     title: "Where the Maps End",
-    image: "/story/ch07-northern-frontier.jpg",
-    alt: "A remote stronghold in a frozen forest beneath snow-laden mountains.",
+    image: "/story/ch07-northern-frontier.png",
+    alt: "A frost-bound stronghold isle above the pale northern peaks of Norien.",
     meta: { era: "Age of Kingdoms", region: "Northern Frontier", status: "Contested", importance: "Moderate" },
     quote: { text: "The maps end, but the world does not.", source: "Marginalia of the Frostward Charts" },
     paragraphs: [
@@ -156,8 +156,8 @@ const CHAPTERS: Chapter[] = [
     short: "Great Trade Era",
     age: "The Great Trade Era",
     title: "Lords of the Routes",
-    image: "/story/ch08-great-trade-era.jpg",
-    alt: "A thriving coastal port town built into cliffs above a busy harbour.",
+    image: "/story/ch08-great-trade-era.png",
+    alt: "Trade isles of Norien linked by glowing golden energy pathways above the mountains.",
     meta: { era: "Age of Trade", region: "Merchant Coast & Great Sea", status: "Historical", importance: "Major" },
     quote: { text: "Hold the harbour, and you hold the realm.", source: "Articles of the Tide" },
     paragraphs: [
@@ -173,8 +173,8 @@ const CHAPTERS: Chapter[] = [
     short: "Age of Expansion",
     age: "The Age of Expansion",
     title: "Beyond the Border Stones",
-    image: "/story/ch09-expansion.jpg",
-    alt: "Sunlit wilderness of cliffs, forests, and open meadow at the frontier's edge.",
+    image: "/story/ch09-expansion.png",
+    alt: "New floating isles emerging from the fog at the frontier's edge of Norien.",
     meta: { era: "Age of Expansion", region: "The Frontiers", status: "Ongoing", importance: "Major" },
     quote: { text: "Every border stone was once the edge of the known.", source: "Journals of the Pathfinders" },
     paragraphs: [
@@ -190,8 +190,8 @@ const CHAPTERS: Chapter[] = [
     short: "Legends",
     age: "Legends of Norien",
     title: "The Names That Endure",
-    image: "/story/ch10-legends.jpg",
-    alt: "A mist-shrouded ancient path lit by a distant, otherworldly glow.",
+    image: "/story/ch10-legends.png",
+    alt: "A lone hero isle beneath a radiant golden compass sigil in the night sky of Norien.",
     meta: { era: "All Ages", region: "Across Norien", status: "Legend", importance: "Cultural" },
     quote: { text: "A life lived boldly enough becomes a story no age can bury.", source: "The Book of Names" },
     paragraphs: [
@@ -207,8 +207,8 @@ const CHAPTERS: Chapter[] = [
     short: "Present Age",
     age: "The Present Age",
     title: "The Unwritten Chapter",
-    image: "/story/ch11-present-age.jpg",
-    alt: "A vast living realm of spires, domes, and rooftops stretching to the horizon.",
+    image: "/story/ch11-present-age.png",
+    alt: "The living world of Norien — floating isles, deep-blue mountains, and golden energy pathways.",
     meta: { era: "The Present Age", region: "All of Norien", status: "Living", importance: "Unwritten" },
     quote: { text: "The next page is blank. Take up the pen.", source: "Inscription at the Gate of Now" },
     paragraphs: [
@@ -363,8 +363,8 @@ export default function Chronicle() {
       <header className="chron__hero">
         <Image
           className="chron__hero-img"
-          src="/story/hero.jpg"
-          alt="The world of Norien at golden dawn."
+          src="/story/hero.png"
+          alt="The world of Norien — floating isles above deep-blue mountains beneath a glowing golden horizon."
           fill
           priority
           sizes="100vw"
